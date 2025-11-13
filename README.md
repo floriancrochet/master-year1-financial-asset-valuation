@@ -112,15 +112,18 @@ The analysis reveals:
 
 ## 📜 License
 This project is released under the **MIT License**.  
-© 2025 Florian Crochet & Pierre Quintin de Kercadio  
+© 2025 Pierre Quintin de Kercadio and Florian Crochet 
 
 ---
 
-## 👤 Author
+## 👤 Authors
+**Pierre Quintin de Kercadio**  
+[GitHub Profile](https://github.com/PierreQDK)  
+
 **Florian Crochet**  
-*Econometrics & Statistics Student | Applied Finance and Data Analysis*  
-> LinkedIn: > À compléter  
-> Email: > À compléter  
+[GitHub Profile](https://github.com/floriancrochet)
+
+*Master 1 – Econometrics & Statistics, Applied Econometrics Track*
 
 ---
 
