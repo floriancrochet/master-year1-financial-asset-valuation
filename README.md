@@ -1,54 +1,74 @@
-# Financial Asset Valuation  
-*A quantitative analysis of football club equities and cryptocurrency performance.*
+# Quantitative Portfolio Analysis: Football Clubs & Solana
+*This R project evaluates the risk-adjusted performance of football club equities and cryptocurrency.*
 
 [**Report (PDF – online)**](https://drive.google.com/file/d/1PhT8aecdhZV8dT5PVNbNAhvdVucygpIk/view?usp=drive_link)
 
 ---
 
-## 📘 Overview
-This project analyzes and evaluates **ten financial assets**, including **nine publicly traded football clubs** and **one cryptocurrency (Solana)**, over the period from **December 2023 to November 2024**.  
-It was developed as part of the **Master 1 – Econometrics and Statistics (Applied Econometrics)** program.
+## 🎯 Overview
 
 **Objectives**
-- Examine return and volatility behavior of football club equities versus cryptocurrency  
-- Assess performance using multiple **risk-adjusted indicators** (Sharpe, Jensen, Treynor, Sortino, Roy, Information ratio)  
-- Apply **Modern Portfolio Theory** to construct **efficient portfolios** (minimum variance and tangency)  
-- Visualize and interpret correlations, covariances, and efficient frontiers  
+- Analyze return and volatility of football clubs and Solana (2023-2024)
+- Assess performance using risk-adjusted indicators (Sharpe, Jensen, Treynor, Sortino, Roy, Information ratio)
+- Construct efficient minimum variance and tangency portfolios using Modern Portfolio Theory
+- Visualize correlations, covariances, and efficient frontiers
+
+---
+
+## 🗄️ Data
+- **Source:** Yahoo Finance (JUVE.MI, SSL.MI, XXT.SG, CCP.L, BVB.MU, SCP.LS, AAB.CO, GSRAY.IS, AJAX.AS, SOL-USD)
+- **Time Period / Size:** 2023-12-01 to 2024-11-30, daily frequency
+- **Target Variable:** Asset closing prices and daily returns
+- **Data Availability:** Publicly available via API
+
+---
+
+## 🧠 Methodology
+- **Theoretical Approach:** Modern Portfolio Theory (Markowitz)
+- **Mathematical Framework:** Variance-covariance matrix optimization, GARCH models for conditional volatility
+- **Evaluation Strategy:** Risk-adjusted performance metrics comparison
 
 ---
 
 ## ⚙️ Features
-- Automated data retrieval from **Yahoo Finance**  
-- Calculation of **daily returns, volatilities, and descriptive statistics**  
-- Visualization of **price and return dynamics** per asset  
-- Computation of **variance–covariance and correlation matrices**  
-- Implementation of **risk–return optimization** (minimum variance and tangent portfolios)  
-- Graphical representation of the **efficient frontier**
+- **Retrieve Financial Data:** Extract daily asset prices automatically from Yahoo Finance
+- **Calculate Return Metrics:** Compute daily returns, volatilities, and descriptive statistics
+- **Visualize Price Dynamics:** Generate time series plots for individual prices and returns
+- **Compute Covariance Matrices:** Estimate variance-covariance and correlation matrices across assets
+- **Optimize Risk-Return:** Implement minimum variance and tangent portfolios
+- **Plot Efficient Frontier:** Map the risk-return optimization boundary graphically
 
 ---
 
 ## 🧰 Tech Stack
-**Language:** R  
-**Libraries:** tidyquant, tidyverse, tseries, rugarch, patchwork, corrplot, xts, PerformanceAnalytics, ggplot2  
+- **Language:** R
+- **Numerical Computing & Data Manipulation:** tidyverse, xts, data.table
+- **Econometrics & Statistical Inference:** tseries
+- **Time Series Analysis:** rugarch
+- **Quantitative Finance:** tidyquant, PerformanceAnalytics
+- **Data Visualization:** ggplot2, patchwork, corrplot
+- **Reporting & Documentation:** Quarto
 
 ---
 
-## ⚙️ Installation
-Clone the repository and install dependencies:
+## 📦 Installation
+Clone the repository and open the project:
 
 ```bash
-git clone https://github.com/<your-username>/financial-asset-evaluation.git
-cd financial-asset-evaluation
-# Open the R project or .Rmd file in RStudio
+git clone https://github.com/floriancrochet/master-year1-financial-asset-valuation.git
+cd master-year1-financial-asset-valuation
 ```
-
-> Ensure the listed R libraries are installed before running the analysis.
 
 ---
 
-## 📚 Usage Example
+## 💻 Usage Example
+
+### Reproducing the Analysis / Execution Pipeline
 
 ```r
+library(tidyverse)
+library(tidyquant)
+
 # Load data from Yahoo Finance
 tickers <- c("JUVE.MI", "SSL.MI", "XXT.SG", "CCP.L", "BVB.MU",
              "SCP.LS", "AAB.CO", "GSRAY.IS", "AJAX.AS", "SOL-USD")
@@ -59,70 +79,57 @@ base <- bind_rows(data) |>
   group_by(symbol) |>
   mutate(return = close / lag(close) - 1)
 
-# Efficient frontier plot
-ggplot(Actifs3bis, aes(x = Sdp, y = Ep)) +
-  geom_point() + labs(title = "Efficient Frontier")
+# Plot asset returns
+base |>
+  ggplot(aes(x = date, y = return, color = symbol)) +
+  geom_line() +
+  labs(title = "Asset Returns Over Time")
 ```
 
 ---
 
 ## 📂 Project Structure
 
-```
-financial-asset-evaluation/
+```text
+master-year1-financial-asset-valuation/
 │
-├── data/               # Raw and cleaned financial data
-├── src/                # R scripts and helper functions
-├── notebooks/          # RMarkdown analyses
-├── figures/            # Generated visualizations
-├── results/            # Output tables and computed metrics
-└── README.md
+├── report/
+├── .gitignore
+├── LICENSE
+├── README.md
+├── master-year1-financial-asset-valuation.Rproj
+└── project.qmd
 ```
 
 ---
 
-## 📊 Results
-The analysis reveals:
-- **Solana (SOL-USD)** exhibits extremely high volatility and kurtosis, confirming its speculative nature.  
-- **Football clubs** show **moderate volatility** and similar sectoral correlations.  
-- **Minimum variance portfolio** offers a lower risk (σ = 0.01148) and slightly higher expected return than the tangent portfolio.  
-- **Diversification** significantly improves efficiency, confirming the theoretical expectations of **Markowitz’s Modern Portfolio Theory**.
+## 📈 Results
 
-![Efficient Frontier Example](./assets/efficient_frontier.png)
+### Key Findings
+- **Volatility Divergence:** Solana (SOL-USD) exhibits extremely high volatility and kurtosis, confirming its speculative nature, while football clubs show moderate volatility and similar sectoral correlations.
+- **Portfolio Efficiency:** The minimum variance portfolio offers a lower risk (σ = 0.0115) and slightly higher expected return than the tangent portfolio.
+- **Diversification:** Diversification significantly improves efficiency, confirming the theoretical expectations of Markowitz's Modern Portfolio Theory.
 
 ---
 
-## 🧠 References
-- Yahoo Finance (data source for all assets)  
-  - [JUVE.MI](https://fr.finance.yahoo.com/quote/JUVE.MI/)  
-  - [SSL.MI](https://fr.finance.yahoo.com/quote/SSL.MI/)  
-  - [XXT.SG](https://fr.finance.yahoo.com/quote/XXT.SG/)  
-  - [CCP.L](https://fr.finance.yahoo.com/quote/CCP.L/)  
-  - [BVB.MU](https://fr.finance.yahoo.com/quote/BVB.MU/)  
-  - [SCP.LS](https://fr.finance.yahoo.com/quote/SCP.LS/)  
-  - [AAB.CO](https://fr.finance.yahoo.com/quote/AAB.CO/)  
-  - [GSRAY.IS](https://fr.finance.yahoo.com/quote/GSRAY.IS/)  
-  - [AJAX.AS](https://fr.finance.yahoo.com/quote/AJAX.AS/)  
-  - [SOL-USD](https://fr.finance.yahoo.com/quote/SOL-USD/)  
-
-> Additional academic references  
-> - Markowitz, *Portfolio Selection*  
-> - Sharpe, *Capital Asset Prices: A Theory of Market Equilibrium*  
-> - Hyndman & Athanasopoulos, *Forecasting: Principles and Practice*  
+## 📚 References
+- Hyndman & Athanasopoulos, *Forecasting: Principles and Practice*
+- Markowitz, *Portfolio Selection*
+- Sharpe, *Capital Asset Prices: A Theory of Market Equilibrium*
 
 ---
 
 ## 📜 License
-This project is released under the **MIT License**.  
-© 2025 Pierre Quintin de Kercadio and Florian Crochet 
+This project is released under the MIT License.
+© 2025 Pierre Quintin de Kercadio and Florian Crochet
 
 ---
 
 ## 👤 Authors
-**Pierre Quintin de Kercadio**  
-[GitHub Profile](https://github.com/PierreQDK)  
+**Pierre Quintin de Kercadio**
+[GitHub Profile](https://github.com/PierreQDK)
 
-**Florian Crochet**  
+**Florian Crochet**
 [GitHub Profile](https://github.com/floriancrochet)
 
 *Master 1 – Econometrics & Statistics, Applied Econometrics Track*
@@ -130,5 +137,4 @@ This project is released under the **MIT License**.
 ---
 
 ## 💬 Acknowledgments
-Conducted under the **M1 Econometrics and Statistics – Applied Econometrics (ECAP)** program.  
-Special thanks to the open-source R community and academic contributors who supported this analysis.
+This work was conducted as part of the M1 Econometrics and Statistics – Applied Econometrics (ECAP) course.
