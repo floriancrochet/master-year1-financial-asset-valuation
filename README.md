@@ -94,6 +94,7 @@ base |>
 master-year1-financial-asset-valuation/
 │
 ├── report/
+│   └── report.pdf
 ├── .gitignore
 ├── LICENSE
 ├── README.md
