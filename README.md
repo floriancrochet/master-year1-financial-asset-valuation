@@ -121,16 +121,16 @@ master-year1-financial-asset-valuation/
 ---
 
 ## 📜 License
-This project is released under the MIT License.
+This project is released under the MIT License.  
 © 2025 Pierre Quintin de Kercadio and Florian Crochet
 
 ---
 
 ## 👤 Authors
-**Pierre Quintin de Kercadio**
+**Pierre Quintin de Kercadio**  
 [GitHub Profile](https://github.com/PierreQDK)
 
-**Florian Crochet**
+**Florian Crochet**  
 [GitHub Profile](https://github.com/floriancrochet)
 
 *Master 1 – Econometrics & Statistics, Applied Econometrics Track*
