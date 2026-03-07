@@ -6,6 +6,7 @@
 ---
 
 ## 🎯 Overview
+This project applies Modern Portfolio Theory to assess the risk-adjusted performance and diversification benefits of European football club stocks combined with the Solana cryptocurrency.
 
 **Objectives**
 - Analyze return and volatility of football clubs and Solana (2023-2024)
@@ -52,11 +53,11 @@
 ---
 
 ## 📦 Installation
-Clone the repository and open the project:
 
 ```bash
 git clone https://github.com/floriancrochet/master-year1-financial-asset-valuation.git
 cd master-year1-financial-asset-valuation
+Rscript -e 'install.packages(c("tidyquant", "tidyverse", "tseries", "rugarch", "patchwork", "corrplot", "xts", "PerformanceAnalytics", "data.table"))'
 ```
 
 ---
@@ -121,21 +122,21 @@ master-year1-financial-asset-valuation/
 ---
 
 ## 📜 License
-This project is released under the MIT License.  
+This project is released under the MIT License.
 © 2025 Pierre Quintin de Kercadio and Florian Crochet
 
 ---
 
 ## 👤 Authors
-**Pierre Quintin de Kercadio**  
+**Pierre Quintin de Kercadio**
 [GitHub Profile](https://github.com/PierreQDK)
 
-**Florian Crochet**  
+**Florian Crochet**
 [GitHub Profile](https://github.com/floriancrochet)
 
 *Master 1 – Econometrics & Statistics, Applied Econometrics Track*
 
 ---
 
-## 💬 Acknowledgments
+## 🤝 Acknowledgments
 This work was conducted as part of the M1 Econometrics and Statistics – Applied Econometrics (ECAP) course.
